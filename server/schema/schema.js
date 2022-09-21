@@ -84,6 +84,15 @@ const Mutation = new GraphQLObjectType({
         return article.save();
       },
     },
+    deleteArticle: {
+      type: ArticleType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve: (parent, args) => {
+        return Article.findByIdAndRemove(args.id);
+      },
+    },
     addSubscriber: {
       type: SubscriberType,
       args: {
@@ -94,6 +103,15 @@ const Mutation = new GraphQLObjectType({
           email: args.email,
         });
         return subscriber.save();
+      },
+    },
+    deleteSubscriber: {
+      type: SubscriberType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve: (parent, args) => {
+        return Subscriber.findByIdAndRemove(args.id);
       },
     },
   },

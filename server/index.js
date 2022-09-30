@@ -13,7 +13,11 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://afriopia.vercel.app",
+  })
+);
 
 app.use(
   "/graphql",

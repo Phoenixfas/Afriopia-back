@@ -14,8 +14,6 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 
 app.use(
   "/graphql",
@@ -24,7 +22,6 @@ app.use(
     graphiql: process.env.NODE_ENV === "development",
   })
 );
-// app.use("/api/admins", adminRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
